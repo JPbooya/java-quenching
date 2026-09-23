@@ -182,7 +182,23 @@ public class Practice {
      * @param head The head of the linked list
      * @return true if the sums are equal, false otherwise
      */
+
+    public static int sumTree(BinaryTreeNode<Integer> root ) {
+        if(root == null) return 0;
+        return root.data + sumTree(root.left) + sumTree(root.right);
+    }
+    
+    public static int nodeSum(ListNode<Integer> head) {
+        if(head == null) return 0;
+        int sum = 0;
+        while(head != null) {
+            sum += head.data;
+            head = head.next;
+        }
+        return sum;
+    }
+
     public static boolean sumMatch(BinaryTreeNode<Integer> root, ListNode<Integer> head) {
-        return false;
+       return sumTree(root) == nodeSum(head);
     }
 }
