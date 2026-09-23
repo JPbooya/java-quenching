@@ -94,8 +94,9 @@ public class Practice {
         while(head != null) {
            if(head.data > biggestNum) {
             biggestNum = head.data;
-            head = head.next;
+    
            }
+            head = head.next;
         }
         return biggestNum;
     }
@@ -136,7 +137,8 @@ public class Practice {
      * @return the number of levels in the tree
      */
     public static int levelCount(BinaryTreeNode<?> root) {
-        return 0;
+        if(root == null) return 0;
+        return 1 + Math.max(levelCount(root.left), levelCount(root.right));
     }
 
 
