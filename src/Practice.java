@@ -1,3 +1,4 @@
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -12,7 +13,17 @@ public class Practice {
      * @return the sum of the odd numbers in the array
      */
     public static int oddSum(int[] nums) {
-        return 0;
+
+        if(nums == null || nums.length == 0) return 0;
+
+        int sum = 0;
+        for(int i = 0; i < nums.length; i++) {
+            if(nums[i] % 2 != 0) {
+                sum += nums[i];
+            }
+        }
+
+        return sum;
     }
 
     /**
@@ -27,7 +38,22 @@ public class Practice {
      * @throws NullPointerException if words is null
      */
     public static String shortestWord(Set<String> words) {
-        return null;
+
+        if(words == null) throw new NullPointerException();
+        if(words.isEmpty()) throw new IllegalArgumentException();
+
+        String shortestStr = null;
+        for(String word : words) {
+            if(shortestStr == null || shortestStr.length() > word.length()) {
+                shortestStr = word;
+            }
+
+            if(word.length() == shortestStr.length() && word.compareTo(shortestStr) < 0) {
+                shortestStr = word;
+            }
+        }
+
+        return shortestStr;
     }
 
     /**
@@ -40,7 +66,17 @@ public class Practice {
      * @throws NullPointerException if ages is null
      */
     public static Set<String> adults(Map<String, Integer> ages) {
-        return null;
+
+        if(ages == null) throw new NullPointerException();
+        
+        Set<String> result = new HashSet<>();
+
+        for(Map.Entry<String, Integer> entry : ages.entrySet()){
+            if(entry.getValue() >= 18 ) {
+                result.add(entry.getKey());
+            }
+        }
+        return result;
     }
 
     /**
